@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Donut Math</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- LANDING -->
+<div id="landing" class="wrap">
+  <nav><div class="logo"><img src="donut.jpg" alt="Donut Math logo">Donut Math</div>
+  <button class="btn ghost" data-go="auth">Sign in</button></nav>
+  <section class="hero">
+    <div>
+      <h1>Algebra 1, one bite at a time.</h1>
+      <p>Short lessons, practice problems, and a progress bar that fills up like a box of donuts.</p>
+      <button class="btn" data-go="auth">Start for $8</button>
+    </div>
+    <img src="donut.jpg" alt="Blue frosted donut">
+  </section>
+  <section class="feat">
+    <div class="card"><h3>12 bite-size lessons</h3><p>From solving equations to quadratics, each lesson takes about 10 minutes.</p></div>
+    <div class="card"><h3>Practice that checks you</h3><p>Type an answer and get instant feedback.</p></div>
+    <div class="card"><h3>Track your progress</h3><p>Mark lessons done and watch your bar fill.</p></div>
+  </section>
+  <div class="card price">
+    <h2>Donut Math Pro</h2>
+    <div class="big">$8</div><div>to get started</div>
+    <ul><li>All Algebra 1 lessons</li><li>Unlimited practice</li><li>Progress tracking</li></ul>
+    <button class="btn" data-go="auth">Get started</button>
+    <p class="fine">This is a demo. You won't be charged.</p>
+  </div>
+  <footer>Donut Math is a fake site made for fun.</footer>
+</div>
+
+<!-- SIGN IN -->
+<div id="auth" class="auth hidden">
+  <div class="card">
+    <div class="logo" style="margin-bottom:6px"><img src="donut.jpg" alt="">Donut Math</div>
+    <h2>Sign in</h2>
+    <label for="em">Email</label><input id="em" type="email" placeholder="you@example.com" autocomplete="off">
+    <label for="pw">Password</label><input id="pw" type="password" placeholder="Anything works">
+    <p class="err" id="err"></p>
+    <button class="btn" id="login">Sign in and start for $8</button>
+    <p class="fine" style="color:var(--mute)">Demo only: any email gets you in, and no payment happens.</p>
+    <button class="btn ghost" data-go="landing" style="margin-top:10px;box-shadow:none">Back</button>
+  </div>
+</div>
+
+<!-- APP -->
+<div id="app" class="wrap hidden">
+  <div class="top">
+    <div class="logo"><img src="donut.jpg" alt="">Donut Math</div>
+    <div class="who"><span id="name"></span><img class="pfp" src="donut.jpg" alt="Your profile picture"><button class="btn ghost" id="out" style="padding:6px 12px;box-shadow:none">Sign out</button></div>
+  </div>
+  <div id="home">
+    <h1 id="hi" style="font-size:2rem"></h1>
+    <p style="color:var(--mute);margin:6px 0 0"><span id="count"></span> lessons done</p>
+    <div class="prog"><i id="bar"></i></div>
+    <div id="units"></div>
+  </div>
+  <div id="view" class="view hidden"></div>
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
