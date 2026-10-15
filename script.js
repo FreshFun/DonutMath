@@ -1,5 +1,4 @@
 (function () {
-  var KEY = 'donutmath-unlocked';
   var LESSONS = [
     { title: 'One-step equations', text: 'You had x donuts, bought 7 more, and now have 12. Solve x + 7 = 12.', answer: 5, hint: 'Subtract 7 from both sides.' },
     { title: 'Two-step equations', text: '3 boxes with x donuts each, plus 4 loose donuts, make 19 donuts. Solve 3x + 4 = 19.', answer: 5, hint: 'Subtract 4 first, then divide by 3.' },
@@ -92,8 +91,6 @@
     { id: 'timed', label: 'Timed' }
   ];
 
-  function isUnlocked() { try { return localStorage.getItem(KEY) === '1'; } catch (e) { return false; } }
-  function remember() { try { localStorage.setItem(KEY, '1'); } catch (e) {} }
 
   function el(tag, cls, text) {
     var x = document.createElement(tag);
@@ -300,7 +297,7 @@
   var coAgree = document.getElementById('co-agree');
   var coErr = document.getElementById('co-err');
 
-  function currentUser() { try { return localStorage.getItem('donutmath-user'); } catch (e) { return null; } }
+  function currentUser() { return document.documentElement.dataset.user || null; }
 
   function openCheckout() {
     var u = currentUser();
@@ -322,17 +319,14 @@
     if (!u && (!em || !coPass.value)) { coErr.textContent = 'Enter an email and a password.'; return; }
     if (!coAgree.checked) { coErr.textContent = 'Check the box to agree to the terms of service.'; return; }
     if (!u) document.dispatchEvent(new CustomEvent('donutmath:signin', { detail: em }));
-    remember();
     co.close();
     unlock();
   };
 
   buy.onclick = openCheckout;
-  if (isUnlocked()) unlock();
 })();
 
 (function () {
-  var USER_KEY = 'donutmath-user';
   var signin = document.getElementById('signin');
   var who = document.getElementById('who');
   var dlg = document.getElementById('auth');
@@ -342,9 +336,9 @@
   var err = document.getElementById('auth-err');
   var user = null;
 
-  function load() { try { return localStorage.getItem(USER_KEY); } catch (e) { return null; } }
+  function load() { return null; }
   function store(v) {
-    try { if (v) localStorage.setItem(USER_KEY, v); else localStorage.removeItem(USER_KEY); } catch (e) {}
+    if (v) document.documentElement.dataset.user = v; else delete document.documentElement.dataset.user;
   }
 
   function render() {
