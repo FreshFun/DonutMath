@@ -3,68 +3,71 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Donut Math</title>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600;700&family=Nunito:wght@400;600;700&display=swap">
+<title>Donut Math: Algebra 1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
-<!-- LANDING -->
-<div id="landing" class="wrap">
-  <nav><div class="logo"><img data-donut alt="Donut Math logo">Donut Math</div>
-  <button class="btn ghost" data-go="auth">Sign in</button></nav>
-  <section class="hero">
-    <div>
-      <h1>Algebra 1, one bite at a time.</h1>
-      <p>Short lessons, practice problems, and a progress bar that fills up like a box of donuts.</p>
-      <button class="btn" data-go="auth">Start for $8</button>
-    </div>
-    <img data-donut alt="Blue frosted donut">
-  </section>
-  <section class="feat">
-    <div class="card"><h3>12 bite-size lessons</h3><p>From solving equations to quadratics, each lesson takes about 10 minutes.</p></div>
-    <div class="card"><h3>Practice that checks you</h3><p>Type an answer and get instant feedback.</p></div>
-    <div class="card"><h3>Track your progress</h3><p>Mark lessons done and watch your bar fill.</p></div>
-  </section>
-  <div class="card price">
-    <h2>Donut Math Pro</h2>
-    <div class="big">$8</div><div>to get started</div>
-    <ul><li>All Algebra 1 lessons</li><li>Unlimited practice</li><li>Progress tracking</li></ul>
-    <button class="btn" data-go="auth">Get started</button>
-    <p class="fine">This is a demo. You won't be charged.</p>
-  </div>
-  <footer>Donut Math is a fake site made for fun.</footer>
-</div>
-
-<!-- SIGN IN -->
-<div id="auth" class="auth hidden">
-  <div class="card">
-    <div class="logo" style="margin-bottom:6px"><img data-donut alt="">Donut Math</div>
-    <h2>Sign in</h2>
-    <label for="em">Email</label><input id="em" type="email" placeholder="you@example.com" autocomplete="off">
-    <label for="pw">Password</label><input id="pw" type="password" placeholder="Anything works">
-    <p class="err" id="err"></p>
-    <button class="btn" id="login">Sign in and start for $8</button>
-    <p class="fine" style="color:var(--mute)">Demo only: any email gets you in, and no payment happens.</p>
-    <button class="btn ghost" data-go="landing" style="margin-top:10px;box-shadow:none">Back</button>
-  </div>
-</div>
-
-<!-- APP -->
-<div id="app" class="wrap hidden">
+<main>
   <div class="top">
-    <div class="logo"><img data-donut alt="">Donut Math</div>
-    <div class="who"><span id="name"></span><img class="pfp" data-donut alt="Your profile picture"><button class="btn ghost" id="out" style="padding:6px 12px;box-shadow:none">Sign out</button></div>
+    <span id="who"></span>
+    <button class="signin" id="signin">Sign in</button>
   </div>
-  <div id="home">
-    <h1 id="hi" style="font-size:2rem"></h1>
-    <p style="color:var(--mute);margin:6px 0 0"><span id="count"></span> lessons done</p>
-    <div class="prog"><i id="bar"></i></div>
-    <div id="units"></div>
-  </div>
-  <div id="view" class="view hidden"></div>
-</div>
+  <h1>Donut Math</h1>
+  <p class="tag">Algebra 1, one glazed bite at a time.</p>
 
+  <div class="hero">
+    <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="A pink frosted donut with sprinkles">
+      <circle cx="100" cy="100" r="92" fill="#E8B574"/>
+      <circle cx="100" cy="100" r="80" fill="#F2849F"/>
+      <path d="M22 100a78 78 0 0 0 40 68c-6-10 4-18 8-8 6-12 20-6 18 6 8-8 20-2 16 8 10-6 22 2 14 12a78 78 0 0 0 54-24c-10 2-12-8-4-12-10-6-4-18 6-16-8-8 0-20 10-14a78 78 0 0 0-166-20z" fill="#F7A9BC" opacity=".55"/>
+      <circle cx="100" cy="100" r="30" fill="#FFE9EF" class="hole"/>
+      <circle cx="100" cy="100" r="30" fill="var(--bg)"/>
+      <g stroke-width="5" stroke-linecap="round">
+        <path d="M50 70l8-5" stroke="#FFFFFF"/><path d="M148 62l8 5" stroke="#3A4BA0"/>
+        <path d="M156 118l-8 6" stroke="#FFFFFF"/><path d="M100 28l1 9" stroke="#3A4BA0"/>
+        <path d="M70 150l5-8" stroke="#FFE066"/><path d="M128 156l-3-9" stroke="#FFFFFF"/>
+        <path d="M40 112l9 2" stroke="#3A4BA0"/><path d="M118 38l7 6" stroke="#FFE066"/>
+        <path d="M160 90l9-1" stroke="#FFE066"/><path d="M82 40l-6 7" stroke="#FFFFFF"/>
+      </g>
+    </svg>
+  </div>
+
+  <section class="lesson" aria-labelledby="lesson-title">
+    <span class="badge">New version</span>
+    <h2 id="lesson-title">Get the new Donut Math</h2>
+    <p class="price">Just <strong>$13</strong> for one purchase</p>
+
+    <div class="try">
+      <p>One payment gets you the new version and all of the newest topics. Nine lessons, endless practice, a quiz and a timed mode unlock after you buy.</p>
+      <button class="buy" id="buy">Buy for $13</button>
+      <p class="result" id="result" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="lessons" hidden aria-labelledby="lessons-title">
+    <h2 id="lessons-title">Your Algebra 1 modes</h2>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div id="panel"></div>
+  </section>
+</main>
+
+<div class="tm">Eldorado Elldog™</div>
+<dialog id="auth" aria-labelledby="auth-title">
+  <form id="auth-form" novalidate>
+    <h2 id="auth-title">Sign in</h2>
+    <label for="email">Email</label>
+    <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
+    <label for="password">Password</label>
+    <input id="password" type="password" autocomplete="current-password">
+    <p class="err" id="auth-err" aria-live="polite"></p>
+    <div class="auth-actions">
+      <button type="button" class="ghost" id="auth-cancel">Cancel</button>
+      <button type="submit" class="submit">Sign in</button>
+    </div>
+  </form>
+</dialog>
 <script src="script.js"></script>
 </body>
 </html>
