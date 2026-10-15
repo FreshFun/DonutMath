@@ -291,7 +291,43 @@
     }
   }
 
-  buy.onclick = function () { remember(); unlock(); };
+  var co = document.getElementById('checkout');
+  var coForm = document.getElementById('co-form');
+  var coFields = document.getElementById('co-fields');
+  var coSigned = document.getElementById('co-signed');
+  var coEmail = document.getElementById('co-email');
+  var coPass = document.getElementById('co-password');
+  var coAgree = document.getElementById('co-agree');
+  var coErr = document.getElementById('co-err');
+
+  function currentUser() { try { return localStorage.getItem('donutmath-user'); } catch (e) { return null; } }
+
+  function openCheckout() {
+    var u = currentUser();
+    coForm.reset();
+    coErr.textContent = '';
+    coFields.hidden = !!u;
+    coSigned.hidden = !u;
+    if (u) coSigned.textContent = 'Signed in as ' + u;
+    co.showModal();
+    if (!u) coEmail.focus();
+  }
+
+  document.getElementById('co-cancel').onclick = function () { co.close(); };
+
+  coForm.onsubmit = function (e) {
+    e.preventDefault();
+    var u = currentUser();
+    var em = coEmail.value.trim();
+    if (!u && (!em || !coPass.value)) { coErr.textContent = 'Enter an email and a password.'; return; }
+    if (!coAgree.checked) { coErr.textContent = 'Check the box to agree to the terms of service.'; return; }
+    if (!u) document.dispatchEvent(new CustomEvent('donutmath:signin', { detail: em }));
+    remember();
+    co.close();
+    unlock();
+  };
+
+  buy.onclick = openCheckout;
   if (isUnlocked()) unlock();
 })();
 
@@ -340,6 +376,12 @@
     dlg.close();
     render();
   };
+
+  document.addEventListener('donutmath:signin', function (e) {
+    user = e.detail;
+    store(user);
+    render();
+  });
 
   user = load();
   render();

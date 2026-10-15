@@ -54,6 +54,42 @@
 </main>
 
 <div class="tm">Eldorado Elldog™</div>
+<dialog id="checkout" aria-labelledby="co-title">
+  <form id="co-form" novalidate>
+    <h2 id="co-title">Sign in to buy</h2>
+    <div id="co-fields">
+      <label for="co-email">Email</label>
+      <input id="co-email" type="email" autocomplete="email" placeholder="you@example.com">
+      <label for="co-password">Password</label>
+      <input id="co-password" type="password" autocomplete="current-password">
+    </div>
+    <p class="signed-in" id="co-signed" hidden></p>
+    <div class="terms" tabindex="0" role="region" aria-label="Terms of service">
+      <h3>Why am I paying again?</h3>
+      <p>Donut Math: Algebra 1 is a new version, not an update to the original Donut Math. If you bought the original for $8, that purchase was for the original. This new version is a separate purchase.</p>
+      <h3>What the $13 includes</h3>
+      <ul>
+        <li>Nine guided Algebra 1 lessons with hints</li>
+        <li>Endless random practice across 13 Algebra 1 topics</li>
+        <li>A 10-question quiz and a 60-second timed mode</li>
+        <li>The newest topics as they are added to this version</li>
+      </ul>
+      <h3>Why it costs more</h3>
+      <p>The new version has much more in it than the original: new Algebra 1 content, new practice modes, and new topics. The price reflects that extra content.</p>
+      <h3>One payment only</h3>
+      <p>You pay $13 once. There is no subscription and no recurring charge.</p>
+      <h3>Parents and guardians</h3>
+      <p>If you are under 18, please ask a parent or guardian before buying. By buying, you confirm you have permission to make this purchase.</p>
+      <p class="fine">Sample terms. Eldorado Elldog™</p>
+    </div>
+    <label class="agree" for="co-agree"><input id="co-agree" type="checkbox"> I have read and agree to the terms of service.</label>
+    <p class="err" id="co-err" aria-live="polite"></p>
+    <div class="auth-actions">
+      <button type="button" class="ghost" id="co-cancel">Cancel</button>
+      <button type="submit" class="submit">Sign in and buy for $13</button>
+    </div>
+  </form>
+</dialog>
 <dialog id="auth" aria-labelledby="auth-title">
   <form id="auth-form" novalidate>
     <h2 id="auth-title">Sign in</h2>
