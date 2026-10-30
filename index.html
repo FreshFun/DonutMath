@@ -1,109 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Donut Math: Algebra 1</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SyncGrades (Demo)</title>
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<header class="top">
+  <h1>SyncGrades</h1>
+  <span class="demo">Demo project · sample data</span>
+</header>
 <main>
-  <div class="top">
-    <span id="who"></span>
-    <button class="signin" id="signin">Sign in</button>
-  </div>
-  <h1>Donut Math</h1>
-  <p class="tag">Algebra 1, one glazed bite at a time.</p>
-
-  <div class="hero">
-    <svg class="donut" viewBox="0 0 200 200" role="img" aria-label="A pink frosted donut with sprinkles">
-      <circle cx="100" cy="100" r="92" fill="#E8B574"/>
-      <circle cx="100" cy="100" r="80" fill="#F2849F"/>
-      <path d="M22 100a78 78 0 0 0 40 68c-6-10 4-18 8-8 6-12 20-6 18 6 8-8 20-2 16 8 10-6 22 2 14 12a78 78 0 0 0 54-24c-10 2-12-8-4-12-10-6-4-18 6-16-8-8 0-20 10-14a78 78 0 0 0-166-20z" fill="#F7A9BC" opacity=".55"/>
-      <circle cx="100" cy="100" r="30" fill="#FFE9EF" class="hole"/>
-      <circle cx="100" cy="100" r="30" fill="var(--bg)"/>
-      <g stroke-width="5" stroke-linecap="round">
-        <path d="M50 70l8-5" stroke="#FFFFFF"/><path d="M148 62l8 5" stroke="#3A4BA0"/>
-        <path d="M156 118l-8 6" stroke="#FFFFFF"/><path d="M100 28l1 9" stroke="#3A4BA0"/>
-        <path d="M70 150l5-8" stroke="#FFE066"/><path d="M128 156l-3-9" stroke="#FFFFFF"/>
-        <path d="M40 112l9 2" stroke="#3A4BA0"/><path d="M118 38l7 6" stroke="#FFE066"/>
-        <path d="M160 90l9-1" stroke="#FFE066"/><path d="M82 40l-6 7" stroke="#FFFFFF"/>
-      </g>
-    </svg>
-  </div>
-
-  <section class="lesson" aria-labelledby="lesson-title">
-    <span class="badge">New version</span>
-    <h2 id="lesson-title">Get the new Donut Math</h2>
-    <p class="price">Just <strong>$13</strong> for one purchase</p>
-
-    <div class="try">
-      <p>One payment gets you the new version and all of the newest topics. Nine lessons, endless practice, a quiz and a timed mode unlock after you buy.</p>
-      <button class="buy" id="buy">Buy for $13</button>
-      <p class="result" id="result" aria-live="polite"></p>
-    </div>
+  <section class="key" aria-label="Grade key">
+    <span><b class="badge E">E</b> Excellent, 90% and up</span>
+    <span><b class="badge G">G</b> Good, 80–89%</span>
+    <span><b class="badge S">S</b> Satisfactory, 70–79%</span>
+    <span><b class="badge N">N</b> Needs improvement, below 70%</span>
   </section>
-
-  <section id="lessons" hidden aria-labelledby="lessons-title">
-    <h2 id="lessons-title">Your Algebra 1 modes</h2>
-    <div class="tabs" id="tabs" role="tablist"></div>
-    <div id="panel"></div>
-  </section>
+  <p class="hint">Tap a percentage to edit it. The letter updates automatically.</p>
+  <ul id="classes" class="classes"></ul>
 </main>
-
-<div class="tm">Eldorado Elldog™</div>
-<dialog id="checkout" aria-labelledby="co-title">
-  <form id="co-form" novalidate>
-    <h2 id="co-title">Sign in to buy</h2>
-    <div id="co-fields">
-      <label for="co-email">Email</label>
-      <input id="co-email" type="email" autocomplete="email" placeholder="you@example.com">
-      <label for="co-password">Password</label>
-      <input id="co-password" type="password" autocomplete="current-password">
-    </div>
-    <p class="signed-in" id="co-signed" hidden></p>
-    <div class="terms" tabindex="0" role="region" aria-label="Terms of service">
-      <h3>Why am I paying again?</h3>
-      <p>Donut Math: Algebra 1 is a new version, not an update to the original Donut Math. If you bought the original for $8, that purchase was for the original. This new version is a separate purchase.</p>
-      <h3>What the $13 includes</h3>
-      <ul>
-        <li>Nine guided Algebra 1 lessons with hints</li>
-        <li>Endless random practice across 13 Algebra 1 topics</li>
-        <li>A 10-question quiz and a 60-second timed mode</li>
-        <li>The newest topics as they are added to this version</li>
-      </ul>
-      <h3>Why it costs more</h3>
-      <p>The new version has much more in it than the original: new Algebra 1 content, new practice modes, and new topics. The price reflects that extra content.</p>
-      <h3>One payment only</h3>
-      <p>You pay $13 once. There is no subscription and no recurring charge.</p>
-      <h3>Parents and guardians</h3>
-      <p>If you are under 18, please ask a parent or guardian before buying. By buying, you confirm you have permission to make this purchase.</p>
-      <p class="fine">Sample terms. Eldorado Elldog™</p>
-    </div>
-    <label class="agree" for="co-agree"><input id="co-agree" type="checkbox"> I have read and agree to the terms of service.</label>
-    <p class="err" id="co-err" aria-live="polite"></p>
-    <div class="auth-actions">
-      <button type="button" class="ghost" id="co-cancel">Cancel</button>
-      <button type="submit" class="submit">Sign in and buy for $13</button>
-    </div>
-  </form>
-</dialog>
-<dialog id="auth" aria-labelledby="auth-title">
-  <form id="auth-form" novalidate>
-    <h2 id="auth-title">Sign in</h2>
-    <label for="email">Email</label>
-    <input id="email" type="email" autocomplete="email" placeholder="you@example.com">
-    <label for="password">Password</label>
-    <input id="password" type="password" autocomplete="current-password">
-    <p class="err" id="auth-err" aria-live="polite"></p>
-    <div class="auth-actions">
-      <button type="button" class="ghost" id="auth-cancel">Cancel</button>
-      <button type="submit" class="submit">Sign in</button>
-    </div>
-  </form>
-</dialog>
 <script src="script.js"></script>
 </body>
 </html>
